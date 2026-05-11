@@ -1,21 +1,27 @@
 class Notification:
+    name = "Notification"
     def send(self,message: str, recipient: str):
-        pass
+        return self.name
 
 class EmailNotification(Notification):
+    name = "EmailNotification"
     pass
 class SMSNotification(Notification):
+    name = "SMSNotification"
     pass
 class PushNotification(Notification):
+    name = "PushNotification"
     pass
 
 class NotificationFactory:
-    def notifycationFactory(self,param):
-        if(param == 0):
+    def notifycation_factory(self, param : str):
+        if not param in ["Email","SMS","Push"]:
+            raise ValueError("param value not supported")
+        if param == "Email":
             return EmailNotification()
-        elif(param == 1):
+        elif param == "SMS":
             return SMSNotification()
-        else:
+        elif param == "Push":
             return PushNotification()
     pass
 
