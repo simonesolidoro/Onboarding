@@ -25,11 +25,11 @@ class BankAccount:
         return self.balance
 
 
-class interesse(ABC):
+class Interesse(ABC):
     @abstractmethod
     def compute_interest(self):
         pass
-class composto(interesse):
+class Composto(Interesse):
     def compute_interest(self,start : float,rate : float,anni : int) -> float:
         if (start < 0 or anni < 0 or rate < 0):
             raise ValueError("start, anni and rate must be positive ")
@@ -37,7 +37,7 @@ class composto(interesse):
         for i in range(anni):
              saldo += (saldo*rate)
         return saldo-start
-class fisso(interesse):
+class Fisso(Interesse):
     def compute_interest(self,start : float,rate : float,anni : int) -> float:
         if (start < 0 or anni < 0 or rate < 0):
             raise ValueError("start, anni and rate must be positive ")
