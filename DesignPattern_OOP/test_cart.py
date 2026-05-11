@@ -2,7 +2,7 @@ import unittest
 from carrello import Cart, Product,CartItem
 
 class TestCart(unittest.TestCase):
-    def test_add_product(self):
+    def test_total_price(self):
         cart = Cart()
         for i in range(10):
             cart.add_product(Product("quaderno",5))
