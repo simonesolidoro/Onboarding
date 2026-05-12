@@ -14,7 +14,7 @@ class PushNotification(Notification):
     pass
 
 class NotificationFactory:
-    def notifycation_factory(self, param : str):
+    def factory(self, param : str):
         if not param in ["Email","SMS","Push"]:
             raise ValueError("param value not supported")
         if param == "Email":

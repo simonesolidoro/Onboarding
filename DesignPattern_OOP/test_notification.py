@@ -1,13 +1,17 @@
-import unittest
 import pytest
 from NotificationFactory import *
 
-class TestNotificationFactory():
-    @pytest.mark.parametrize("type_not,expected",[("SMS","SMSNotification"),("Email","EmailNotification"),("Push","PushNotification")])
-    def test_email_notification(self,type_not ,expected ):
-        factory = NotificationFactory()
-        notify = factory.notifycation_factory(param=type_not)
-        assert expected == notify.send("","")  # add assertion here
+@pytest.fixture
+def notification_factory():
+    return NotificationFactory()
 
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.parametrize("type_not,expected",
+                         [("SMS","SMSNotification"),
+                          ("Email","EmailNotification"),
+                          ("Push","PushNotification")])
+def test_notification_factory(notification_factory,type_not ,expected ):
+    notify = notification_factory.factory(param=type_not)
+    assert expected == notify.send("","")  # add assertion here
+def test_notification_factory_exception(notification_factory):
+    with pytest.raises(ValueError):
+        notify = notification_factory.factory(param="Whatsapp")
