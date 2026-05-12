@@ -1,5 +1,3 @@
-from os import name
-
 import pytest
 import mongoengine as db
 from mongoengine import connect, Document, IntField, StringField, EmbeddedDocument

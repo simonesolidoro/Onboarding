@@ -15,4 +15,3 @@ def test_tot_price(number_item,expected):
     cart.remove_product(Product("quaderno",price_quaderno))
     #expected = number_item*price_matita+ (number_item-1)*price_quaderno
     assert expected == cart.total_price()  # add assertion here
-

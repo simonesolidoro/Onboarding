@@ -95,8 +95,8 @@ def mongoengine_es8():
             pass
 
         @staticmethod
-        def get_by_author(author: str):
-            return Post.objects(author = author)
+        def get_by_author(author_: str):
+            return Post.objects(author = author_)
 
     class Post(Document):
         title = db.StringField()
@@ -119,11 +119,6 @@ if __name__ == '__main__':
 
     connect(db="learning_db", host="mongodb://localhost:27017/")
 
-    # mongoengine_es2()
-    mongoengine_es1()
-    # mongoengine_es3()
-    # mongoengine_es4()
     # mongoengine_es5()
-    # mongoengine_es6()
     # mongoengine_es7()
     # mongoengine_es8()

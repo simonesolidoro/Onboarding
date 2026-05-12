@@ -20,6 +20,11 @@ class User(Document):
 
     def to_json(self):
         return {'email': self.email, 'username': self.username, 'age': self.age}
+    #es 9: add clean() to validated username
+    def clean(self):
+        if " " in User.username:
+            raise ValueError("username must not contain spaces")
+        pass
 
 
 def es3():
