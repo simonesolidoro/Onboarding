@@ -1,7 +1,5 @@
-import unittest
 import pytest
 from carrello import Cart, Product,CartItem
-
 
 @pytest.mark.parametrize("number_item,expected",
                          [(1,1),
@@ -18,6 +16,3 @@ def test_tot_price(number_item,expected):
     #expected = number_item*price_matita+ (number_item-1)*price_quaderno
     assert expected == cart.total_price()  # add assertion here
 
-
-if __name__ == '__main__':
-    unittest.main()
