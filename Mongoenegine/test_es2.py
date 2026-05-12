@@ -1,9 +1,7 @@
 import pytest
 import mongoengine as db
 from mongoengine import connect, Document, IntField, StringField, EmbeddedDocument
-
-from Mongoenegine.es2 import Post
-from es2 import Post,find_post,increment_views, sort_by_views_dec
+from es2 import Post,find_post,increment_views,sort_by_views_dec
 
 @pytest.fixture
 def db_es2():

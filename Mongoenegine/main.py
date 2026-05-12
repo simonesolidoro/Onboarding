@@ -19,48 +19,6 @@ class MongoengineEs1:
 
 
 
-
-def mongoengine_es3 ():
-    """
-    embedded document e list of embedded documents
-
-    """
-    class Adress(EmbeddedDocument):
-        street = db.StringField()
-        city = db.StringField()
-        zip_code = db.IntField()
-        country = db.StringField()
-    class User(Document):
-        email = db.StringField(required=True)#unique= True
-        username = db.StringField()
-        age = IntField(max_value=99, min_value=0)
-        created_at = db.DateTimeField(default=datetime.datetime.now)
-        is_active = db.BooleanField(default=True)
-        adresses = db.EmbeddedDocumentListField(Adress)
-        def to_json(self):
-            return {'email': self.email, 'username': self.username, 'age': self.age}
-    User.objects().delete()
-    ind1 = Adress(street = "via Garbagnate", city = "lainate", zip_code= 20045, country= "Italia")
-    ind2 = Adress(street="via Garbagnate", city="lainate", zip_code=20020, country="Italia")
-    simo = User(email= "simosoli==@gmail.com", username = "simos", age = 26, adresses = [ind1, ind2])
-    simo.save()
-    simo2 = User(email= "simosoli00@gmail.com", username = "simos", age = 26, adresses = [ind1, ind2])
-    simo2.save()
-    cri = User(email="crisoli00@gmail.com", username="cris", age=26)
-    cri.save()
-    ale = User(email="alesoli04@gmail.com", username="ales", age=22)
-    ale.save()
-
-    us = []
-    for u26 in User.objects(age = 26):
-        us.append(u26)
-    for u in us:
-        print(u.to_json())
-
-    print(User.objects().count())
-    for i in User.objects(adresses__country="Italia"):
-        print( i.to_json())
-
 def mongoengine_es4():
     class Author(Document):
         name = db.StringField()
