@@ -15,7 +15,8 @@ class BankAccount:
         return self.balance_
 
     def deposit(self, amount):
-        assert amount >= 0, "amount must be positive "
+        if amount < 0:
+            raise ValueError("amount must be positive")
         self.balance_ += amount
     def withdraw(self, amount):
         if amount > self.balance_:
